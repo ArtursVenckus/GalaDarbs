@@ -1,6 +1,6 @@
-MYSQL datubaze ir savienota ar Intellij java.
-Ja dabū datus no MYSQL un atspoguļo tos tabulā.
-Tikka izveidota jauna directory kur tikka ielikts JAR file (kafijas krūzīte).
-Java ļauj ievadīt datus MYSQLdatubazē ievietojot tos izmantojos SWING UI kas ir izveidots GUL klasē.
-DB logic klase ļauj savienoties ar mySQL 
-Main klase lauj palaist aplikāciju SWING UI.
+MYSQL datubāze ir savienota ar Intellij Java.
+Java saņem datus no MYSQL un atspoguļo tos tabulā.
+Tika izveidota jauna directory kurā tika ielikts JAR fails (kafijas krūzīte).
+Java ļauj ievadīt datus MYSQL datubazē, ievietojot tos izmantojot SWING UI, kas ir izveidots GUI klasē.
+DB logic klase ļauj savienoties ar MYSQL 
+Main klase ļauj palaist aplikāciju Swing UI.

@@ -1,14 +1,14 @@
 Instrukcija.
 
-1.Atvert vaļā programmu.
-2.Ievadīt lauciņā Prece preces no saukumu un vai isu aprakstu.
-3.Ievadīt lauciņā Cena preces cenu, vai nu 2 cipari, vai 2 cipari aiz komata, piemēram, 20 vai 20,10.
-4.Ievadīt datumu kurā tikka aizpildīts ieraksts datuma formāts DD.MM.YYYY.
-5.Pēc visu lauciņu aizpildes lūdzu nospiest pogu ievadīt, ja viss ir pareizi ievadīts, tad Jums izlekt paziņojums "Jusu ieraksts ir veiksimi pievienots"
-6.Ja vēlaties izdzēst kādu ierakstu, lūdzu izvēlaties tabulā, kas atrodās labajā pusē ierakstu kuru vēlaties izdzēst un uzspiežat pogu "dzest."
-7.Tikai viens ieraksts var tiekt dzēsts vienlaicīgi.
-8.Ja vēlaties rediģēt ierakstu, lūdzam veikt dubultklikšķi lodziņā Prece, Summa vai Datums, lai to rediģētu, kad pabeidzat veikt izmaiņas nospiežāt pogu enter. ID mainīt nedrīkst.
-9.Ja vēlaties visu kārtot pēc ID, tad uzspiežāt pogu Sort by ID, tas kārtos visus ID sākot no mazākā cipara augšā, uz lielāko apakšā.
-10.Ja vēlaties kārtot izrakstus pēc cenas, lūdzam uzspiest pogu Sort by Cena, tas kārtos visas cenas no austākās kas būs ekrāna augšpusē, uz mazāko.
-11.Ja vēlaties beigt darbu, nospiežāt pogu X ekrāna augšējā labajā stūrī.
-
+1.Atveriet programmu.
+2.Lauciņā ''Prece'', ievadiet preces nosaukumu un vai tās īsu aprakstu, lai izveidotu jaunu preces vienību.
+3.Lauciņā ''Cena'' ievadiet preces cenu, 2 ciparu vērtībā, vai vērtību ar 2 cipariem aiz komata, piemēram 20 vai 20,10.
+4.Lauciņa ''Datums'' ievadiet datumu kurā tikka aizpildīts ieraksts. Datuma formāts DD.MM.YYYY.
+5.Pēc visu lauciņu aizpildīšanas, lai saglabātu ievadītos datus, nospiediet pogu ''Ievadīt''. Ja ievadītie dati ir pareizi un atbilst piemērojamajam formātam, uz ekrāna parādīsies paziņojums "Jūsu ieraksts ir veiksmīgi pievienots".
+6.Ja vēlaties izdzēst kādu ierakstu, aplikācijas apakšējā malā atradīsiet pogu ''Dzēst''. Izvēlieties dzēšamo ierakstu no tabulas un spiediet pogu "Dzēst."
+7.Vienlaicīgi var tikt dzēst tikai viens ieraksts. 
+8.Ja vēlaties rediģēt ierakstu, tabulā izvēlieties rediģējamo lauciņu veicot dubultklikšķi: ''Prece'', ''Summa'' vai ''Datums'', un kad izmaiņas ir veiktas, saglabāšanai, nospiediet taustiņu ''Enter''. Tabulā ierakstus kolonnā ''ID''
+ mainīt nedrīkst.
+9.Ja vēlaties visu kārtot secīgi pēc ''ID'' numura, aplikācijas labajā apakšējā malā spiediet pogu ''Sort by ID''. Tas kārtos visus ierakstus pēc to ID numuriem augošā secībā. 
+10.Ja vēlaties kārtot izrakstus pēc cenas, aplikācijas labajā apakšējā malā spiediet pogu ''Sort by Cena''. Tas kārtos visus ierakstus pēc preces cenas dilstošā secībā.
+11.Ja vēlaties beigt darbu, aplikācijas augšējā labajā stūrī nospiediet simbolu ''X''.

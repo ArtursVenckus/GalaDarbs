@@ -3,18 +3,22 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ArrayList;
 
 public class GUI extends JFrame {
 
     private JPanel gridPanel; //galvenais konteineris kur likt virsu datus
     private JTextField preceField, cenaField, datumsField; //raksti blakus laukiem kas pasaka kur ko aizpildit
-    private JButton enterButton, deleteButton; //ievietot preci poga un dzesanas poga
+    private JButton enterButton, deleteButton, sortButton, sortByIdButton; //ievietot preci poga un dzesanas poga un sortesanas pogas
     private JTable dataTable; //labas puses tabula
     private DefaultTableModel tableModel;  // Tabulas Modelis
     private int selectedRow; //lauj izveleties rindu ar peli
 
     public GUI() {
-        setTitle("Izdevumu parskats"); //uzraksts aplikascijas augspuse kreisaja sturi
+        setTitle("Izdevumu parskats"); //uzraksts aplikacijas augspuse kreisaja sturi
         setSize(1000, 600); // Galvena panela izmers
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aplikacija taisas ciet ja aizver
 
@@ -135,6 +139,12 @@ public class GUI extends JFrame {
         deleteButton.addActionListener(e -> deleteSelectedRow());
         panel.add(deleteButton);
 
+        // sortesanas poga pec Cenas un ID
+        sortButton = new JButton("Sort by Cena (Descending)");
+        sortByIdButton = new JButton("Sort by ID (Ascending)");
+        panel.add(sortButton);
+        panel.add(sortByIdButton);
+
         // izveleties rindu ar peles klikski
         dataTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -142,6 +152,84 @@ public class GUI extends JFrame {
                 selectedRow = dataTable.getSelectedRow();
             }
         });
+
+        sortButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Izveidots Comperator lai kartotu pec cenas
+                Comparator<Object[]> comparator = (row1, row2) -> {
+                    double cena1 = (double) row1[2];
+                    double cena2 = (double) row2[2];
+                    return (int) (cena2 - cena1); // kartot pec vertibam no mazakas uz lielako
+                };
+
+                List<Object[]> sortedDataList = new ArrayList<>();
+
+                //Itere cauri tableModel datiem un iznem tikai rindas ar cipariskam vertibam "Cena"
+
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    Object[] row = tableModel.getDataVector().get(i).toArray();
+                    if (row[2] instanceof Number) { // Parbauda vai vertiba ir cipars
+                        sortedDataList.add(row);
+                    }
+                }
+
+                Object[][] dataToSort = sortedDataList.isEmpty() ? null : sortedDataList.toArray(new Object[0][]);
+
+
+                if (dataToSort != null) {
+                    Arrays.sort(dataToSort, comparator);
+
+
+                    tableModel.setRowCount(0);
+
+
+                    for (Object[] row : dataToSort) {
+                        tableModel.addRow(row);
+                    }
+
+                }
+            }
+        });
+
+        sortByIdButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Izveidots Comperator lai kartotu pec ID
+                Comparator<Object[]> comparator = (row1, row2) -> {
+                    Integer id1 = (Integer) row1[0]; // Assuming 'ID' is at index 0
+                    Integer id2 = (Integer) row2[0];
+                    return id1.compareTo(id2); // Ascending order
+                };
+
+                List<Object[]> sortedDataList = new ArrayList<>();
+
+                //Itere cauri tableModel datiem un iznem tikai rindas ar cipariskam vertibam "ID"
+                for (int i = 0; i < tableModel.getRowCount(); i++) {
+                    Object[] row = tableModel.getDataVector().get(i).toArray();
+                    if (row[2] instanceof Number) {  // Parbauda vai vertiba ir cipars
+                        sortedDataList.add(row);
+                    }
+                }
+
+                Object[][] dataToSort = sortedDataList.isEmpty() ? null : sortedDataList.toArray(new Object[0][]);
+
+
+                if (dataToSort != null) {
+                    Arrays.sort(dataToSort, comparator);
+
+
+                    tableModel.setRowCount(0);
+
+
+                    for (Object[] row : dataToSort) {
+                        tableModel.addRow(row);
+                    }
+
+                }
+            }
+        });
+
 
         gridPanel.add(panel, "Saraksts"); // tabulas pievienosana panelim kur tiek uzglabati visi dati
     }

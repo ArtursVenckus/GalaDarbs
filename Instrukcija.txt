@@ -1,0 +1,14 @@
+Instrukcija.
+
+1.Atvert vaļā programmu.
+2.Ievadīt lauciņā Prece preces no saukumu un vai isu aprakstu.
+3.Ievadīt lauciņā Cena preces cenu, vai nu 2 cipari, vai 2 cipari aiz komata, piemēram, 20 vai 20,10.
+4.Ievadīt datumu kurā tikka aizpildīts ieraksts datuma formāts DD.MM.YYYY.
+5.Pēc visu lauciņu aizpildes lūdzu nospiest pogu ievadīt, ja viss ir pareizi ievadīts, tad Jums izlekt paziņojums "Jusu ieraksts ir veiksimi pievienots"
+6.Ja vēlaties izdzēst kādu ierakstu, lūdzu izvēlaties tabulā, kas atrodās labajā pusē ierakstu kuru vēlaties izdzēst un uzspiežat pogu "dzest."
+7.Tikai viens ieraksts var tiekt dzēsts vienlaicīgi.
+8.Ja vēlaties rediģēt ierakstu, lūdzam veikt dubultklikšķi lodziņā Prece, Summa vai Datums, lai to rediģētu, kad pabeidzat veikt izmaiņas nospiežāt pogu enter. ID mainīt nedrīkst.
+9.Ja vēlaties visu kārtot pēc ID, tad uzspiežāt pogu Sort by ID, tas kārtos visus ID sākot no mazākā cipara augšā, uz lielāko apakšā.
+10.Ja vēlaties kārtot izrakstus pēc cenas, lūdzam uzspiest pogu Sort by Cena, tas kārtos visas cenas no austākās kas būs ekrāna augšpusē, uz mazāko.
+11.Ja vēlaties beigt darbu, nospiežāt pogu X ekrāna augšējā labajā stūrī.
+

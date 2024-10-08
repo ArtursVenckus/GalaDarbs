@@ -68,7 +68,8 @@ public class GUI extends JFrame {
         datumsField.setBounds(140, 110, 200, 25);
         panel.add(datumsField);
 
-        enterButton = new JButton("Ievadīt");
+        //Ievadit poga
+        enterButton = new JButton("Ievadit");
         enterButton.setBounds(140, 150, 100, 25);
         panel.add(enterButton);
 
@@ -322,10 +323,11 @@ public class GUI extends JFrame {
         }
     }
 
+    //saskaita kopejo summu
     private void updateTotalSum() {
         double totalSum = 0.0;
         for (int i = 0; i < tableModel.getRowCount(); i++) {
-            totalSum += (double) tableModel.getValueAt(i, 2); // Assuming "Cena" is at index 2
+            totalSum += (double) tableModel.getValueAt(i, 2);
         }
         totalSumLabel.setText(String.format("Kopējā summa: %.2f", totalSum));
     }

@@ -16,10 +16,11 @@ public class GUI extends JFrame {
     private JTable dataTable; //labas puses tabula
     private DefaultTableModel tableModel;  // Tabulas Modelis
     private int selectedRow; //lauj izveleties rindu ar peli
+    private JLabel totalSumLabel; // kopeja summa
 
     public GUI() {
         setTitle("Izdevumu parskats"); //uzraksts aplikacijas augspuse kreisaja sturi
-        setSize(1000, 600); // Galvena panela izmers
+        setSize(1200, 800); // Galvena panela izmers
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //aplikacija taisas ciet ja aizver
 
         gridPanel = new JPanel(new GridLayout(1, 2));  // Cik uz panela ir rindas un cik kollonas
@@ -71,8 +72,7 @@ public class GUI extends JFrame {
         enterButton.setBounds(140, 150, 100, 25);
         panel.add(enterButton);
 
-
-        // Action listener lai ievaditu tesktu, lauj panemt ievadito vertibu un iedot konkretam mainigajam
+        // Action listener lai ievaditu tekstu, lauj panemt ievadito vertibu un iedot konkretam mainigajam
         enterButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -152,6 +152,12 @@ public class GUI extends JFrame {
                 selectedRow = dataTable.getSelectedRow();
             }
         });
+
+        // Lebels kur var redzet kopejo summu
+        totalSumLabel = new JLabel("Kopējā summa: 0.00");
+        panel.add(totalSumLabel);
+
+        gridPanel.add(panel, "Saraksts");
 
         sortButton.addActionListener(new ActionListener() {
             @Override
@@ -247,8 +253,10 @@ public class GUI extends JFrame {
                 String prece = rs.getString("PRECE");
                 double cena = rs.getDouble("SUMMA");
                 String datums = rs.getString("DATUMS");
-                tableModel.addRow(new Object[]{id, prece, cena, datums } );
+                tableModel.addRow(new Object[]{id, prece, cena, datums });
             }
+
+            updateTotalSum(); // Update total sum after refreshing data
             //error messege ja ievada nepareizi datus, parak daudz ciparu piemeram
         } catch (SQLException e) {
             e.printStackTrace();
@@ -264,8 +272,8 @@ public class GUI extends JFrame {
             pstmt.setString(1, prece);
             pstmt.setDouble(2, cena);
             pstmt.setString(3, datums);
-
             pstmt.executeUpdate();
+
 
             // dabut uzgenereto ID no SQL datu bazes
             ResultSet generatedKeys = pstmt.getGeneratedKeys();
@@ -273,6 +281,7 @@ public class GUI extends JFrame {
                 int newID = generatedKeys.getInt(1);
                 tableModel.addRow(new Object[]{newID, prece, cena, datums});
                 JOptionPane.showMessageDialog(this, "Jusu ieraksts veiksmigi pievienots!"); //pievieno ierakstu
+                updateTotalSum();
             } else {
                 JOptionPane.showMessageDialog(this, "Ieraksta kluda!", "Kluda", JOptionPane.ERROR_MESSAGE); // nevar pievienot ierakstu
             }
@@ -304,11 +313,20 @@ public class GUI extends JFrame {
             tableModel.removeRow(selectedRow);
 
             JOptionPane.showMessageDialog(this, "Jusu ieraksts veiksmigi dzests!");
+            updateTotalSum();
 
             //ja neizdodas izdzest ierakstu no datubazes
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Datu dzesanas kluda!", "Kluda", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void updateTotalSum() {
+        double totalSum = 0.0;
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            totalSum += (double) tableModel.getValueAt(i, 2); // Assuming "Cena" is at index 2
+        }
+        totalSumLabel.setText(String.format("Kopējā summa: %.2f", totalSum));
     }
 }
